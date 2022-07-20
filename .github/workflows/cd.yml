@@ -22,7 +22,7 @@ jobs:
     - name: Package
       id: package
       run: |
-        brew install -f "formula/poppler-qt6.rb"
+        brew install --formula --build-from-source "formula/poppler-qt6.rb"
         
 
         
