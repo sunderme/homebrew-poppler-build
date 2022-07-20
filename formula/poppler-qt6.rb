@@ -1,4 +1,4 @@
-class Poppler < Formula
+class PopplerQt6 < Formula
     desc "PDF rendering library (based on the xpdf-3.0 code base)"
     homepage "https://poppler.freedesktop.org/"
     url "https://poppler.freedesktop.org/poppler-22.06.0.tar.xz"
