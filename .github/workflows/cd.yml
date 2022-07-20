@@ -22,7 +22,7 @@ jobs:
     - name: Package
       id: package
       run: |
-        brew install -f "${TRAVIS_BUILD_DIR}/travis-ci/mac/poppler.rb"
+        brew install -f "formula/poppler-qt6.rb"
         
 
         
