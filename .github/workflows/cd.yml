@@ -23,6 +23,7 @@ jobs:
       id: package
       run: |
         brew install --formula --build-bottle "formula/poppler-qt6.rb"
+        brew postinstall poppler-qt6
         brew bottle poppler-qt6
         ls -l
       
