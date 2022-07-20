@@ -1,0 +1,29 @@
+name: CD
+on:
+  - push
+  - pull_request
+
+jobs:
+  
+      
+  macosx:
+    name: Mac OS X
+    runs-on: macos-10.15
+    if: True
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    
+
+    - name: Package
+      id: package
+      run: |
+        brew install -f "${TRAVIS_BUILD_DIR}/travis-ci/mac/poppler.rb"
+        
+
+        
+ 
