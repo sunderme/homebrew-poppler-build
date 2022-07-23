@@ -22,11 +22,14 @@ jobs:
     - name: Package
       id: package
       run: |
-        brew install --formula --build-bottle "formula/poppler-qt6.rb"
-        brew postinstall poppler-qt6
+        brew install --build-bottle ${{ github.repository_owner }}/poppler-build/poppler-qt6
         brew bottle poppler-qt6
         ls -l
-      
+    - name: Archive bottle
+      uses: actions/upload-artifact@v3
+      with:
+        name: poppler-qt6
+        path: poppler-qt6-*.tar.gz 
 
         
  
