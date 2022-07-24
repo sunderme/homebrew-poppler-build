@@ -1,8 +1,8 @@
 class PopplerQt6 < Formula
     desc "PDF rendering library (based on the xpdf-3.0 code base)"
     homepage "https://poppler.freedesktop.org/"
-    url "https://poppler.freedesktop.org/poppler-22.06.0.tar.xz"
-    sha256 "a0f9aaa3918bad781039fc307a635652a14d1b391cd559b66edec4bedba3c5d7"
+    url "https://poppler.freedesktop.org/poppler-22.07.0.tar.xz"
+    sha256 "420230c5c43782e2151259b3e523e632f4861342aad70e7e20b8773d9eaf3428"
     license "GPL-2.0-only"
     head "https://gitlab.freedesktop.org/poppler/poppler.git", branch: "master"
   
@@ -27,7 +27,6 @@ class PopplerQt6 < Formula
     depends_on "fontconfig"
     depends_on "freetype"
     depends_on "gettext"
-    depends_on "glib"
     depends_on "jpeg"
     depends_on "libpng"
     depends_on "libtiff"
@@ -62,7 +61,7 @@ class PopplerQt6 < Formula
         -DBUILD_GTK_TESTS=OFF
         -DENABLE_BOOST=OFF
         -DENABLE_CMS=lcms2
-        -DENABLE_GLIB=ON
+        -DENABLE_GLIB=OFF
         -DENABLE_QT5=OFF
         -DENABLE_QT6=ON
         -DENABLE_UNSTABLE_API_ABI_HEADERS=ON
@@ -72,11 +71,6 @@ class PopplerQt6 < Formula
       system "cmake", ".", *args
       system "make", "install"
       system "make", "clean"
-      system "cmake", ".", "-DBUILD_SHARED_LIBS=OFF", *args
-      system "make"
-      lib.install "libpoppler.a"
-      lib.install "cpp/libpoppler-cpp.a"
-      lib.install "glib/libpoppler-glib.a"
       resource("font-data").stage do
         system "make", "install", "prefix=#{prefix}"
       end
@@ -85,7 +79,6 @@ class PopplerQt6 < Formula
         libpoppler = (lib/"libpoppler.dylib").readlink
         [
           "#{lib}/libpoppler-cpp.dylib",
-          "#{lib}/libpoppler-glib.dylib",
           "#{lib}/libpoppler-qt#{Formula["qt"].version.major}.dylib",
           *Dir["#{bin}/*"],
         ].each do |f|
