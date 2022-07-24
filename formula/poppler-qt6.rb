@@ -61,7 +61,7 @@ class PopplerQt6 < Formula
         -DBUILD_GTK_TESTS=OFF
         -DENABLE_BOOST=OFF
         -DENABLE_CMS=lcms2
-        -DENABLE_GLIB=OFF
+        -DENABLE_GLIB=ON
         -DENABLE_QT5=OFF
         -DENABLE_QT6=ON
         -DENABLE_UNSTABLE_API_ABI_HEADERS=ON
