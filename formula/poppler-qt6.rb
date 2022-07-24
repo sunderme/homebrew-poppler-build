@@ -21,13 +21,13 @@ class PopplerQt6 < Formula
     end
   
     depends_on "cmake" => :build
-    depends_on "gobject-introspection" => :build
+    #depends_on "gobject-introspection" => :build
     depends_on "pkg-config" => :build
     depends_on "cairo"
     depends_on "fontconfig"
     depends_on "freetype"
     depends_on "gettext"
-    depends_on "glib"
+    #depends_on "glib"
     depends_on "jpeg"
     depends_on "libpng"
     depends_on "libtiff"
@@ -62,7 +62,7 @@ class PopplerQt6 < Formula
         -DBUILD_GTK_TESTS=OFF
         -DENABLE_BOOST=OFF
         -DENABLE_CMS=lcms2
-        -DENABLE_GLIB=ON
+        -DENABLE_GLIB=OFF
         -DENABLE_QT5=OFF
         -DENABLE_QT6=ON
         -DENABLE_UNSTABLE_API_ABI_HEADERS=ON
