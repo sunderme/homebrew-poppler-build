@@ -70,6 +70,7 @@ class PopplerQt6 < Formula
       ]
   
       system "cmake", ".", *args
+      system "make", ""
       system "make", "install"
       system "make", "clean"
       resource("font-data").stage do
