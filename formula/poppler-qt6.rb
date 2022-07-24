@@ -27,6 +27,7 @@ class PopplerQt6 < Formula
     depends_on "fontconfig"
     depends_on "freetype"
     depends_on "gettext"
+    depends_on "glib"
     depends_on "jpeg"
     depends_on "libpng"
     depends_on "libtiff"
@@ -65,7 +66,7 @@ class PopplerQt6 < Formula
         -DENABLE_QT5=OFF
         -DENABLE_QT6=ON
         -DENABLE_UNSTABLE_API_ABI_HEADERS=ON
-        -DWITH_GObjectIntrospection=ON
+        -DWITH_GObjectIntrospection=OFF
       ]
   
       system "cmake", ".", *args
