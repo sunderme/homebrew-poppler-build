@@ -1,8 +1,8 @@
 class PopplerQt6 < Formula
     desc "PDF rendering library (based on the xpdf-3.0 code base)"
     homepage "https://poppler.freedesktop.org/"
-    url "https://poppler.freedesktop.org/poppler-22.06.0.tar.xz"
-    sha256 "a0f9aaa3918bad781039fc307a635652a14d1b391cd559b66edec4bedba3c5d7"
+    url "https://poppler.freedesktop.org/poppler-22.08.0.tar.xz"
+    sha256 "b493328721402f25cb7523f9cdc2f7d7c59f45ad999bde75c63c90604db0f20b"
     license "GPL-2.0-only"
     head "https://gitlab.freedesktop.org/poppler/poppler.git", branch: "master"
   
@@ -12,12 +12,12 @@ class PopplerQt6 < Formula
     end
   
     bottle do
-      sha256 arm64_monterey: "6a9a03ef00b96147cb7dd8f1d55d318ac98577255d21b24b3556514426372127"
-      sha256 arm64_big_sur:  "580dc54efe7f80a7696c3d5a52b3435b6b909d1d34eb334e68fe8d9af7d8a179"
-      sha256 monterey:       "347cea91f23b1c28233e33b891de63326627f20f4b6e2c451f67e7fe11ab7d81"
-      sha256 big_sur:        "c2c904b91a1a56af30804ab486371693daabe5d32d0b82a4e916ac1d551e28ac"
-      sha256 catalina:       "5bb6da938581b58c4c396a988c1cce2c7b0d21196889bf81fc614c36670706f0"
-      sha256 x86_64_linux:   "34b88907d8a4ec05ae6f5a1935593aa605850d3cddce4e9405348bf77c1fd22a"
+      sha256 arm64_monterey: "a2f098c3bdb79a810d1a88f5492b405b165f2f71e5a0152db5abc180cfc0647a"
+      sha256 arm64_big_sur:  "157869bc6537f08b996f33aa3e993d11de71634db860acd9e2067da4e45944f3"
+      sha256 monterey:       "40d3b7ae291de1c94c41749a7806c197eb833fcb4351a0459d22941e6a0f4afb"
+      sha256 big_sur:        "d3b93d4e8de01235e40fb13b1dc373b4ced6fd20595562f85c19f9c2713e2d93"
+      sha256 catalina:       "87fd7582ecde41c95f49b9c64480c3282a4978c2e9f64a46a307aface7fb3b08"
+      sha256 x86_64_linux:   "72c377e8e00865e5257124ff201fb5da8c8d3937c8ec5d4c50acbb694af6a0dd"
     end
   
     depends_on "cmake" => :build
@@ -57,6 +57,10 @@ class PopplerQt6 < Formula
   
     def install
       ENV.cxx11
+
+      # Fix for BSD sed. Reported upstream at:
+      # https://gitlab.freedesktop.org/poppler/poppler/-/issues/1290
+      inreplace "CMakeLists.txt", "${SED} -i", "\\0 -e"
   
       args = std_cmake_args + %w[
         -DBUILD_GTK_TESTS=OFF
