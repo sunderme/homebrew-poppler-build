@@ -1,8 +1,8 @@
 class PopplerQt6 < Formula
     desc "PDF rendering library (based on the xpdf-3.0 code base)"
     homepage "https://poppler.freedesktop.org/"
-    url "https://poppler.freedesktop.org/poppler-22.09.0.tar.xz"
-    sha256 "d7a8f748211359cadb774ba3e18ecda6464b34027045c0648eb30d5852a41e2e"
+    url "https://poppler.freedesktop.org/poppler-22.10.0.tar.xz"
+    sha256 "04e40fad924a6de62e63017a6fd4c04696c1f526dedc2ba5ef275cedf646292a"
     license "GPL-2.0-only"
     head "https://gitlab.freedesktop.org/poppler/poppler.git", branch: "master"
   
